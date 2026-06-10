@@ -50,21 +50,6 @@
 		}
 	</script>
 
-	<!-- analog clock function -->
-	<script>
-		var canvas = document.getElementById("clock-background");
-		var ctx = canvas.getContext("2d");
-		var radius = canvas.height / 2
-		ctx.translate(radius, radius);
-		radius = radius * 0.90
-
-		function drawClock() {
-			drawFace(ctx, radius);
-			drawNumbers(ctx, radius);
-			drawTime(ctx, radius);
-		}
-	</script>
-
 	<!-- TODO - include page tracker -->
 	<!-- TODO - include letterboxd api with recent watchlist -->
 		
@@ -81,11 +66,27 @@
 		<script src="contact.js"></script>
 		
 		<p>TODO - welcome message and time of most recent client visit</p>
+		
+		<!-- display analog clock -->
+		<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+		<script>
+			var canvas = document.getElementById("analog-clock");
+			var ctx = canvas.getContext("2d");
+			var radius = canvas.height / 2
+			ctx.translate(radius, radius);
+			radius = radius * 0.90
 
-		<!-- TODO - digital clock display
-			 TODO - analog clock display -->
-		<canvas id="clock-background" width="250" height="150" style="background-color:#999"></canvas>
-		<script>setInterval(drawClock,500);</script>
+			function drawClock() {
+				drawFace(ctx, radius);
+				drawNumbers(ctx, radius);
+				drawTime(ctx, radius);
+			}
+
+			setInterval(drawClock, 1000);
+			
+		</script>
+
+		<!-- display digital clock -->
 		<script type="text/javascript">
 			function displayTime() {
 				document.getElementById('clock').innerHTML = "Current time: " + new Date();
