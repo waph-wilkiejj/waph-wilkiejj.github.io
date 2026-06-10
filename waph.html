@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>WAPH - Joe WIlkie</title>
+	<title>Joe Wilkie</title>
 
 	<!--<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href=https://www.w3schools.com/html/styles.css>-->
 	<link rel="stylesheet" href=https:/waph-uc.github.io/style1.css>
 
-	<style>
+	<!--<style>
 		.button {
 			background-color: #4CAF50; /* Green */
 			border: none;
@@ -23,173 +23,166 @@
 		}
 		.round {border-radius: 8px;}
 		#response {background-color: #ff9800;} /* Orange */
-	</style>
+	</style>-->
 
 </head>
 <body>
-	<div class="container wrapper">
-		<div id="top">
-			<h1>Web Application Programming and Hacking</h1>
-			<h2>Front-end Web Development Lab</h2>
-			<h3>Instructor: Dr. Phu Phung</h3>
-		</div>
+	<!-- SCRIPTING GOES HERE -->
+	
+	<!-- including libraries and js files -->
+	<script src="https://waph-phung.github.io/clock.js"></script>
 
-		<div id="menubar">
-			<h3>Student: Joe Wilkie</h3>
-			<img src="joeHeadshot.jpg" alt="My headshot" width="50">
-		</div>
+	<script
+		  src="https://code.jquery.com/jquery-4.0.0.js"
+		  integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+		  crossorigin="anonymous">
+	</script>
 
-<!-- scripting time -->
+	<!-- functions for basic Ajax GET and POST requests -->
+	<script>
+		function getEcho() {
+			var input = document.getElementById("data").value;
 
-		<!-- including libraries and js files -->
-		<script src="https://waph-phung.github.io/clock.js">
-		</script>
+			//error checking input string
+			if (input.length == 0) {
+				return;
+			}
 
-		<script
-			  src="https://code.jquery.com/jquery-4.0.0.js"
-			  integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
-			  crossorigin="anonymous">
-		</script>
-
-		<!-- functions for basic Ajax GET and POST requests -->
-		<script>
-			function getEcho() {
-				var input = document.getElementById("data").value;
-
-				//error checking input string
-				if (input.length == 0) {
-					return;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log("Received requested data="+xhttp.responseText);
+					document.getElementById("response").innerText="Response from server:" + xhttp.responseText;
+					//code to show the data?
 				}
-
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						console.log("Received requested data="+xhttp.responseText);
-						document.getElementById("response").innerText="Response from server:" + xhttp.responseText;
-						//code to show the data?
-					}
-				}
-				xhttp.open("GET", "echo.php?data="+input, true);
-				//code to create an Ajax request?
-				xhttp.send(); //code to set the Ajax request?
-				document.getElementById("data").value="";
 			}
-		</script>
-
-		<!-- functions for jquery GET and POST requests -->
-		<script>
-			function jQueryAjax() {
-			  	var input = $("#data").val();
-			  	if (input.length == 0) return;
-		  		$.get("echo.php?data="+input, function(result) {
-			  			$("#response").html("Response from server:" + result);
-			 	 	}
-			  	);
-			  	$("#data").val("");
-			  }
-
-			function jQueryAjaxPost() {
-				var input = $("#data").val();
-				if (input.length == 0) return;
-				$.post("echo.php",{data: input}, function( result ) {
-						$("#response").html("Response from server:" + result);
-					}
-				);
-				$("#data").val("");
-			}
-		</script>
-
-		<!-- API requests -->
-		<script>
-			$.get("https://v2.jokeapi.dev/joke/Programming?type=single", function(result) {
-				$("#response").html("Programming joke of the refresh: "+result.joke);
-			})
-
-			async function guessAge(name){
-				const response = await fetch("https://api.agify.io?name="+name);
-				const result = await response.json();
-				$("#response").html("Hi " + name + ", your age should be " + result.age);
-			}
-
-		</script>
-
-		<!-- email javascript button -->
-		<div id="email" onclick="showhideEmail()">Show my email address</div>
-		<script src="email.js"></script>
-		<div id="digit-clock"></div>
-		<script type="text/javascript">
-			function displayTime() {
-				document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
-			}
-			setInterval(displayTime,100);
-		</script>
-
-		<!-- analog clock canvas -->
-		<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-
-		<!-- analog clock drawing function -->
-		<script>
-			var canvas = document.getElementById("analog-clock");
-			var ctx = canvas.getContext("2d");
-			var radius = canvas.height / 2
-			ctx.translate(radius, radius);
-			radius = radius * 0.90
-
-			function drawClock() {
-				drawFace(ctx, radius);
-				drawNumbers(ctx, radius);
-				drawTime(ctx, radius);
-			}
-
-			setInterval(drawClock, 1000);
 			
-		</script>
+			xhttp.open("GET", "echo.php?data="+input, true);
+			//code to create an Ajax request?
+			xhttp.send(); //code to set the Ajax request?
+			document.getElementById("data").value="";
+		}
+	</script>
 
-		<!-- show Date() javascript button -->
-		<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Show Date()</div>
-		<!-- css styling -->
-		<div class="wrapper">
+	<!-- functions for jquery GET and POST requests -->
+	<script>
+		function jQueryAjax() {
+		  	var input = $("#data").val();
+		  	if (input.length == 0) return;
+		  		$.get("echo.php?data="+input, function(result) {
+	  			$("#response").html("Response from server:" + result);
+	 	 	});
+		  	$("#data").val("");
+		}
+
+		function jQueryAjaxPost() {
+			var input = $("#data").val();
+			if (input.length == 0) return;
+				$.post("echo.php",{data: input}, function( result ) {
+				$("#response").html("Response from server:" + result);
+			});
+			$("#data").val("");
+		}
+	</script>
+
+	<!-- API requests -->
+	<script>
+		$.get("https://v2.jokeapi.dev/joke/Programming?type=single", function(result) {
+		$("#response").html("Programming joke of the refresh: "+result.joke);
+		})
+
+		async function guessAge(name){
+			const response = await fetch("https://api.agify.io?name="+name);
+			const result = await response.json();
+			$("#response").html("Hi " + name + ", your age should be " + result.age);
+		}
+	</script>
+
+	<!-- email javascript button -->
+	<div id="email" onclick="showhideEmail()">Show my email address</div>
+	<script src="email.js"></script>
+	<div id="digit-clock"></div>
+	<script type="text/javascript">
+		function displayTime() {
+			document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
+		}
+		
+		setInterval(displayTime,100);
+	</script>
+
+	<!-- analog clock canvas -->
+	<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+
+	<!-- analog clock drawing function -->
+	<script>
+		var canvas = document.getElementById("analog-clock");
+		var ctx = canvas.getContext("2d");
+		var radius = canvas.height / 2
+		ctx.translate(radius, radius);
+		radius = radius * 0.90
+
+		function drawClock() {
+			drawFace(ctx, radius);
+			drawNumbers(ctx, radius);
+			drawTime(ctx, radius);
+		}
+
+		setInterval(drawClock, 1000);
+	</script>
+		
+	<!-- CONTENT GOES HERE -->
+	<div id="top">
+		<img src="joeHeadshot.jpg" alt="My headshot" width="150">
+		<h1>Joe Wilkie</h1>
+		<h3>Cell: 502-415-9814 | Email: wilkiejj@mail.uc.edu</h3>
+	</div>
+
+	<div id="x"></div>
+
+	
+	<!-- show Date() javascript button -->
+	<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Show Date()</div>
+	<!-- css styling -->
 		<hr>
 		<b>Experiments with Javascript code</b><br>
 		<i>Inlined JS</i>
-		<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to run JS Date()</div>
+	<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to run JS Date()</div>
 
 		<!-- user interactable buttons -->
-		<hr><b> Interaction with forms!</b>
-		<div>
-			<i>HTTP GET request</i>
-			<form action="/echo.php" method="GET">
-				Input: <input name="data">
-				<input type="submit" value="Submit">
-			</form>
-		</div>
-
-		<div>
-			<i>HTTP POST request</i>
-			<form action="/echo.php" method="POST">
-				Input:<input name="data" onkeypress="console.log('do NOT press that key')">
-				<input type="submit" value="Submit">
-			</form>
-		</div>
-
-		<div>
-			<i>Ajax requests</i><br>
-			Input:
-			<input name="data" onkeypress="console.log('You have pressed a key')" id="data">
-			<input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
-			<input class="button round" type="button" value="Ajax Jquery GET" onclick="jQueryAjax()">
-			<input class="button round" type="button" value="Ajax Jquery POST" onclick="jQueryAjaxPost()">
-			<input class="button round" type="button" value="guess Age" onclick="guessAge($('#data').val())">
-			<div id="response"></div>
-		</div>
-
-		<!-- simple attribution message -->
-		<hr>
-		<div id="main">
-			<p>A simple HTML page </p>
-			Using the <a href="https://www.w3schools.com/html">W3Schools template</a>
-		</div>
+	<hr><b> Interaction with forms!</b>
+	<div>
+		<i>HTTP GET request</i>
+		<form action="/echo.php" method="GET">
+			Input: <input name="data">
+			<input type="submit" value="Submit">
+		</form>
 	</div>
-</div>
+
+	<div>
+		<i>HTTP POST request</i>
+		<form action="/echo.php" method="POST">
+			Input:<input name="data" onkeypress="console.log('do NOT press that key')">
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<div>
+		<i>Ajax requests</i><br>
+		Input:
+		<input name="data" onkeypress="console.log('You have pressed a key')" id="data">
+		<input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
+		<input class="button round" type="button" value="Ajax Jquery GET" onclick="jQueryAjax()">
+		<input class="button round" type="button" value="Ajax Jquery POST" onclick="jQueryAjaxPost()">
+		<input class="button round" type="button" value="guess Age" onclick="guessAge($('#data').val())">
+		<div id="response"></div>
+	</div>
+
+	<!-- simple attribution message -->
+	<hr>
+	<div id="main">
+		<p>A simple HTML page </p>
+		Using the <a href="https://www.w3schools.com/html">W3Schools template</a>
+	</div>
+	
 </body>
 </html>
