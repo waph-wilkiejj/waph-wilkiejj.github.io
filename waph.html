@@ -110,9 +110,6 @@
 		setInterval(displayTime,100);
 	</script>
 
-	<!-- analog clock canvas -->
-	<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-
 	<!-- analog clock drawing function -->
 	<script>
 		var canvas = document.getElementById("analog-clock");
@@ -132,14 +129,121 @@
 		
 	<!-- CONTENT GOES HERE -->
 	<div id="top">
+		<hr>
+		<!-- TODO headshot -->
 		<img src="joeHeadshot.jpg" alt="My headshot" width="150">
+
+		<!-- contact info -->
 		<h1>Joe Wilkie</h1>
-		<h3>Cell: 502-415-9814 | Email: wilkiejj@mail.uc.edu</h3>
+		<h4>Cell: 502-415-9814 | Email: wilkiejj@mail.uc.edu</h4>
+
+		<!-- TODO clock section -->
+		<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+		<hr>
 	</div>
 
-	<div id="x"></div>
+	<div id="about">
+		<h3>About</h3>
+		<p>
+			TODO - values statement, background information, and skills
+		</p>
+	</div>
 
-	
+	<!-- work experiences -->
+	<div id="work-exp">
+		<h2>Work Experiences</h2>
+		<ul>
+			<li>
+				<details class="toyota">
+					<summary>Co-ops at Toyota</summary>
+					<h4>Production Engineering</h4>
+					<p>
+						TODO
+					</p>
+					<h4>Quality Engineering</h4>
+					<p>
+						TODO
+					</p>
+			</li>
+			<li>
+				<details class="copeland">
+					<summary>Co-oping at Copeland</summary>
+					<h4>Electrical Engineering</h4>
+					<p>
+						TODO
+					</p>
+			</li>
+			<li>
+				<details class="part-time">
+					<summary>Part-Time Roles</summary>
+					<h4>Crew Chief - Discount Tire</h4>
+					<p>
+						TODO
+					</p>
+					<h4>IT Support - Sacred Heart Academy</h4>
+					<p>
+						TODO
+					</p>
+					<h4>Network Technician - FocustApps</h4>
+					<p>
+						TODO
+					</p>
+					<h4>Restaurant Busboy - Gander</h4>
+					<p>
+						TODO
+					</p>
+			</li>
+		</ul>
+	</div>
+
+	<!-- education -->
+	<!-- work experiences -->
+	<div id="education">
+		<h2>Education</h2>
+		<ul>
+			<li>
+				<details class="toyota">
+					<summary>Co-ops at Toyota</summary>
+					<h4>Production Engineering</h4>
+					<p>
+						TODO
+					</p>
+					<h4>Quality Engineering</h4>
+					<p>
+						TODO
+					</p>
+			</li>
+			<li>
+				<details class="copeland">
+					<summary>Co-oping at Copeland</summary>
+					<h4>Electrical Engineering</h4>
+					<p>
+						TODO
+					</p>
+			</li>
+			<li>
+				<details class="part-time">
+					<summary>Part-Time Roles</summary>
+					<h4>Crew Chief - Discount Tire</h4>
+					<p>
+						TODO
+					</p>
+					<h4>IT Support - Sacred Heart Academy</h4>
+					<p>
+						TODO
+					</p>
+					<h4>Network Technician - FocustApps</h4>
+					<p>
+						TODO
+					</p>
+					<h4>Restaurant Busboy - Gander</h4>
+					<p>
+						TODO
+					</p>
+			</li>
+		</ul>
+	</div>
+
 	<!-- show Date() javascript button -->
 	<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Show Date()</div>
 	<!-- css styling -->
