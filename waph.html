@@ -51,16 +51,6 @@
 		}
 	</script>
 
-	<!-- digital clock constantly running -->
-	<div id="digit-clock"></div>
-	<script type="text/javascript">
-		function displayTime() {
-			document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
-		}
-		
-		setInterval(displayTime,100);
-	</script>
-
 	<!-- analog clock drawing function -->
 	<script>
 		var canvas = document.getElementById("analog-clock");
@@ -92,15 +82,42 @@
 		<!-- contact info javascript button -->
 		<div id="contact" onclick="showHideContact()"><h4>Click Me for Email Address and Phone Number</h4></div>
 		<script src="contact.js"></script>
+		
 		<p>TODO - welcome message or time of most recent client visit</p>
 
 		<!-- TODO - clock section
 			 TODO - digital clock display
 			 TODO - analog clock display
 			 TODO - remember clock choice with cookies -->
-		<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+		<div id="clock" onclick="changeClock()"><canvas id="clock-background" width="250" height="150" style="background-color:#999"></canvas></div>
+		<script type="text/javascript">
+			function displayTime() {
+				document.getElementById('clock').innerHTML = "Current time: " + new Date();
+			}
+
+			var canvas = document.getElementById("clock-background");
+			var ctx = canvas.getContext("2d");
+			var radius = canvas.height / 2
+			ctx.translate(radius, radius);
+			radius = radius * 0.90
+			function displayClock() {
+				drawFace(ctx, radius);
+				drawNumbers(ctx, radius);
+				drawTime(ctx, radius);
+			}
+
+			var type = false
+			function changeClock() {
+				setInterval(displayTime,500);
+				type = false;
+			}else{
+				setInterval(displayClock,500);
+				type = true;
+			}
+		</script>
+		
 		<hr>
-	</div>
+	</div> <!-- end top div -->
 
 	<div id="about">
 		<!-- <h2>About</h2> -->
