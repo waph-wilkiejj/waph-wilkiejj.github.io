@@ -90,21 +90,8 @@
 		<!-- contact info -->
 		<h1>Joe Wilkie</h1>
 		<!-- contact info javascript button -->
-		<div id="contact" onclick="showHideContact()"><h4>Click for Email and Phone Number</h4></div>
-		<script>
-			var shown = false;
-			function showHideContact(){
-				if (shown){
-					document.getElementById('contact').innerHTML = "Show Email Address";
-					shown = false;
-				}else{
-					var emailAddress = "<a href='mailto:wilkiejj" + "@" + "mail.uc.edu'>wilkiejj" + "@" + "mail.uc.edu</a>";
- 				   	var phoneNumber = "<a href='tel:" + "+" + "15024159814'>" + "+" + "1 502-415-9814</a>";
-					document.getElementById('contact').innerHTML= "Email: " + emailAddress + " | Phone: " + phoneNumber;
-					shown = true;
-				}
-			}
-		</script>
+		<div id="contact" onclick="showHideContact()"><h4>Click Me for Email Address and Phone Number</h4></div>
+		<script src="contact.js"></script>
 		<p>TODO - welcome message or time of most recent client visit</p>
 
 		<!-- TODO - clock section
