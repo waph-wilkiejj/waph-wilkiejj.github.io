@@ -91,7 +91,22 @@
 		<h1>Joe Wilkie</h1>
 		<!-- contact info javascript button -->
 		<div id="contact" onclick="showHideContact()"><h4>Click for Email and Phone Number</h4></div>
-		<script src="contact.js"></script>
+		<script>
+			var shown = false;
+			function showHideContact(){
+				if (shown){
+					document.getElementById('email').innerHTML = "Show Email Address";
+			   		document.getElementById('phone').innerHTML = "Show Phone Number";
+					shown = false;
+				}else{
+					var emailAddress = "<a href='mailto:wilkiejj" + "@" + "mail.uc.edu'>wilkiejj" + "@" + "mail.uc.edu</a>";
+ 				   	var phoneNumber = "<a href='tel:" + "+" + "15024159814'>" + "+" + "1 502-415-9814</a>";
+					document.getElementById('email').innerHTML= emailAddress;
+  				  	document.getElementById('phone').innerHTML = phoneNumber;
+					shown = true;
+				}
+			}
+		</script>
 		<p>TODO - welcome message or time of most recent client visit</p>
 
 		<!-- TODO - clock section
