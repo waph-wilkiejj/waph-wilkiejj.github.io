@@ -95,7 +95,7 @@
 				document.getElementById('clock').innerHTML = "Current time: " + new Date();
 			}
 
-			var canvas = document.getElementById("clock-background");
+			/*var canvas = document.getElementById("clock-background");
 			var ctx = canvas.getContext("2d");
 			var radius = canvas.height / 2
 			ctx.translate(radius, radius);
@@ -108,12 +108,12 @@
 
 			var type = false
 			function changeClock() {
-				setInterval(displayTime,500);
-				type = false;
-			}else{
 				setInterval(displayClock,500);
-				type = true;
-			}
+				type = false;
+			}else{*/
+				setInterval(displayTime,500);
+			/*	type = true;
+			}*/
 		</script>
 		
 		<hr>
