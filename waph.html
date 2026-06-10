@@ -38,57 +38,10 @@
 		  crossorigin="anonymous">
 	</script>
 
-	<!-- functions for basic Ajax GET and POST requests -->
-	<script>
-		function getEcho() {
-			var input = document.getElementById("data").value;
-
-			//error checking input string
-			if (input.length == 0) {
-				return;
-			}
-
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					console.log("Received requested data="+xhttp.responseText);
-					document.getElementById("response").innerText="Response from server:" + xhttp.responseText;
-					//code to show the data?
-				}
-			}
-			
-			xhttp.open("GET", "echo.php?data="+input, true);
-			//code to create an Ajax request?
-			xhttp.send(); //code to set the Ajax request?
-			document.getElementById("data").value="";
-		}
-	</script>
-
-	<!-- functions for jquery GET and POST requests -->
-	<script>
-		function jQueryAjax() {
-		  	var input = $("#data").val();
-		  	if (input.length == 0) return;
-		  		$.get("echo.php?data="+input, function(result) {
-	  			$("#response").html("Response from server:" + result);
-	 	 	});
-		  	$("#data").val("");
-		}
-
-		function jQueryAjaxPost() {
-			var input = $("#data").val();
-			if (input.length == 0) return;
-				$.post("echo.php",{data: input}, function( result ) {
-				$("#response").html("Response from server:" + result);
-			});
-			$("#data").val("");
-		}
-	</script>
-
 	<!-- API requests -->
 	<script>
 		$.get("https://v2.jokeapi.dev/joke/Programming?type=single", function(result) {
-		$("#response").html("Programming joke of the refresh: "+result.joke);
+		$("#response").html("Joke of the day: "+result.joke);
 		})
 
 		async function guessAge(name){
@@ -98,9 +51,7 @@
 		}
 	</script>
 
-	<!-- email javascript button -->
-	<div id="email" onclick="showhideEmail()">Show my email address</div>
-	<script src="email.js"></script>
+	<!-- digital clock constantly running -->
 	<div id="digit-clock"></div>
 	<script type="text/javascript">
 		function displayTime() {
@@ -126,6 +77,9 @@
 
 		setInterval(drawClock, 1000);
 	</script>
+
+	<!-- TODO - include page tracker -->
+	<!-- TODO - include letterboxd api with recent watchlist -->
 		
 	<!-- CONTENT GOES HERE -->
 	<div id="top">
@@ -133,17 +87,23 @@
 		<!-- TODO random headshot selection -->
 		<img src="joeHeadshot.jpg" alt="My headshot" width="150">
 
-		<!-- TODOcontact info -->
+		<!-- contact info -->
 		<h1>Joe Wilkie</h1>
-		<h4>Cell: 502-415-9814 | Email: wilkiejj@mail.uc.edu</h4>
+		<!-- email javascript button -->
+		<div id="email" onclick="showhideEmail()"><h4>Click for Email and Phone Number</h4></div>
+		<script src="email.js"></script>
+		<p>TODO - welcome message or time of most recent client visit</p>
 
-		<!-- TODO clock section -->
+		<!-- TODO - clock section
+			 TODO - digital clock display
+			 TODO - analog clock display
+			 TODO - remember clock choice with cookies -->
 		<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
 		<hr>
 	</div>
 
 	<div id="about">
-		<h2>About</h2>
+		<!-- <h2>About</h2> -->
 		<p>
 			TODO - values statement, background information, and skills
 			<br>
@@ -160,19 +120,13 @@
 			<i>Production Engineering - Toyota</i>
 			<ul>
 				<li>TODO</li>
-				<li>TODO</li>
-				<li>TODO</li>
 			</ul>
 			<i>Quality Engineering - Toyota</i>
 			<ul>
 				<li>TODO</li>
-				<li>TODO</li>
-				<li>TODO</li>
 			</ul>
 			<i>Electrical Engineering - Copeland</i>
 			<ul>
-				<li>TODO</li>
-				<li>TODO</li>
 				<li>TODO</li>
 			</ul>
 			<u>Part-Time Roles</u>
@@ -180,25 +134,17 @@
 			<i>Crew Chief - Discount Tire</i>
 			<ul>
 				<li>TODO</li>
-				<li>TODO</li>
-				<li>TODO</li>
 			</ul>
 			<i>IT Support - Sacred Heart Academy</i>
 			<ul>
-				<li>TODO</li>
-				<li>TODO</li>
 				<li>TODO</li>
 			</ul>
 			<i>Network Technician - FocustApps</i>
 			<ul>
 				<li>TODO</li>
-				<li>TODO</li>
-				<li>TODO</li>
 			</ul>
 			<i>Restaurant Busboy - Gander</i>
 			<ul>
-				<li>TODO</li>
-				<li>TODO</li>
 				<li>TODO</li>
 			</ul>
 		</details>
@@ -213,15 +159,11 @@
 			<i>Significant Coursework</i>
 			<ul>
 				<li>TODO</li>
-				<li>TODO</li>
-				<li>TODO</li>
 			</ul>
 			<b>국민대학교 (Kookmin University)</b>
 			<p>TODO - degree, graduation date, honors, GPA</p>
 			<i>Significant Coursework</i>
 			<ul>
-				<li>TODO</li>
-				<li>TODO</li>
 				<li>TODO</li>
 			</ul>
 			<b>Dupont Manual High School</b>
@@ -236,49 +178,10 @@
 		</details>
 	</div>
 
-	<!-- show Date() javascript button -->
-	<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Show Date()</div>
-	<!-- css styling -->
-		<hr>
-		<b>Experiments with Javascript code</b><br>
-		<i>Inlined JS</i>
-	<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to run JS Date()</div>
-
-		<!-- user interactable buttons -->
-	<hr><b> Interaction with forms!</b>
-	<div>
-		<i>HTTP GET request</i>
-		<form action="/echo.php" method="GET">
-			Input: <input name="data">
-			<input type="submit" value="Submit">
-		</form>
-	</div>
-
-	<div>
-		<i>HTTP POST request</i>
-		<form action="/echo.php" method="POST">
-			Input:<input name="data" onkeypress="console.log('do NOT press that key')">
-			<input type="submit" value="Submit">
-		</form>
-	</div>
-
-	<div>
-		<i>Ajax requests</i><br>
-		Input:
-		<input name="data" onkeypress="console.log('You have pressed a key')" id="data">
-		<input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
-		<input class="button round" type="button" value="Ajax Jquery GET" onclick="jQueryAjax()">
-		<input class="button round" type="button" value="Ajax Jquery POST" onclick="jQueryAjaxPost()">
-		<input class="button round" type="button" value="guess Age" onclick="guessAge($('#data').val())">
-		<div id="response"></div>
-	</div>
-
-	<!-- simple attribution message -->
 	<hr>
-	<div id="main">
-		<p>A simple HTML page </p>
-		Using the <a href="https://www.w3schools.com/html">W3Schools template</a>
-	</div>
+
+	<div id="response"></div>
+	<p>This joke was generated by a public, third-party source. I assume no responsibility for it's quality or lack thereof.</p>
 	
 </body>
 </html>
