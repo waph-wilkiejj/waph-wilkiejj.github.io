@@ -68,7 +68,7 @@
 		<p>TODO - welcome message and time of most recent client visit</p>
 		
 		<!-- display analog clock -->
-		<canvas id="analog-clock" width="300" height="150" style="background-color:#999"></canvas>
+		<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
 		<script>
 			var canvas = document.getElementById("analog-clock");
 			var ctx = canvas.getContext("2d");
@@ -90,7 +90,7 @@
 		<div id="clock"></div>
 		<script type="text/javascript">
 			function displayTime() {
-				document.getElementById('clock').innerHTML = "Current time: " + new Date();
+				document.getElementById('clock').innerHTML = new Date();
 			}
 			setInterval(displayTime,500);
 		</script>
@@ -102,7 +102,8 @@
 		<p>
 			TODO - values statement, background information, and skills
 			<br>
-			TODO - resume download button
+			<!-- resume download button -->
+			<a href="wilkieJohnathanResume.pdf" download="Joe Wilkie Resume"><button type="button">Download Resume</button></a>
 		</p>
 	</div>
 
