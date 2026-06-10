@@ -27,11 +27,10 @@
 
 </head>
 <body>
-	<!-- SCRIPTING GOES HERE -->
+	<!-- SCRIPTING BELOW HERE -->
 	
 	<!-- including libraries and js files -->
 	<script src="https://waph-phung.github.io/clock.js"></script>
-
 	<script
 		  src="https://code.jquery.com/jquery-4.0.0.js"
 		  integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
@@ -51,9 +50,9 @@
 		}
 	</script>
 
-	<!-- analog clock drawing function -->
+	<!-- analog clock function -->
 	<script>
-		var canvas = document.getElementById("analog-clock");
+		var canvas = document.getElementById("clock-background");
 		var ctx = canvas.getContext("2d");
 		var radius = canvas.height / 2
 		ctx.translate(radius, radius);
@@ -64,14 +63,12 @@
 			drawNumbers(ctx, radius);
 			drawTime(ctx, radius);
 		}
-
-		setInterval(drawClock, 1000);
 	</script>
 
 	<!-- TODO - include page tracker -->
 	<!-- TODO - include letterboxd api with recent watchlist -->
 		
-	<!-- CONTENT GOES HERE -->
+	<!-- CONTENT BELOW HERE -->
 	<div id="top">
 		<hr>
 		<!-- TODO random headshot selection -->
@@ -83,39 +80,18 @@
 		<div id="contact" onclick="showHideContact()"><h4>Click Me for Email Address and Phone Number</h4></div>
 		<script src="contact.js"></script>
 		
-		<p>TODO - welcome message or time of most recent client visit</p>
+		<p>TODO - welcome message and time of most recent client visit</p>
 
-		<!-- TODO - clock section
-			 TODO - digital clock display
-			 TODO - analog clock display
-			 TODO - remember clock choice with cookies -->
-		<div id="clock" onclick="changeClock()"><canvas id="clock-background" width="250" height="150" style="background-color:#999"></canvas></div>
+		<!-- TODO - digital clock display
+			 TODO - analog clock display -->
+		<canvas id="clock-background" width="250" height="150" style="background-color:#999"></canvas>
+		<script>setInterval(drawClock,500);</script>
 		<script type="text/javascript">
 			function displayTime() {
 				document.getElementById('clock').innerHTML = "Current time: " + new Date();
 			}
-
-			/*var canvas = document.getElementById("clock-background");
-			var ctx = canvas.getContext("2d");
-			var radius = canvas.height / 2
-			ctx.translate(radius, radius);
-			radius = radius * 0.90
-			function displayClock() {
-				drawFace(ctx, radius);
-				drawNumbers(ctx, radius);
-				drawTime(ctx, radius);
-			}
-
-			var type = false
-			function changeClock() {
-				setInterval(displayClock,500);
-				type = false;
-			}else{*/
-				setInterval(displayTime,500);
-			/*	type = true;
-			}*/
+			setInterval(displayTime,500);
 		</script>
-		
 		<hr>
 	</div> <!-- end top div -->
 
